@@ -1,6 +1,6 @@
 ---
 name: 10x-simpler-code
-description: Aggressively simplify code to the fewest, clearest lines — collapse abstractions, delete speculative code, strip comments. Use when the user says "10x simpler", "simplify 10x", "distill", "condense", "shrink", or asks to make code radically simpler or more minimal. Targets the current changes by default, or any path, ref, or PR the user points at. Code only. For PR descriptions, comments, or other prose, use 10x-simpler-prose.
+description: Use when the user says "10x simpler", "simplify 10x", "distill", "condense", "shrink", or asks to make code radically simpler or more minimal. Code only. For PR descriptions, comments, or other prose, use 10x-simpler-prose.
 argument-hint: "[path | staged | unstaged | branch | commit-range | PR#]"
 ---
 

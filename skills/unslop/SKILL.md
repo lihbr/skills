@@ -1,6 +1,6 @@
 ---
 name: unslop
-description: Cut AI tells from any writing. Must always apply.
+description: Use on all writing before anyone reads it, including replies to the user, commit messages, PR titles and bodies (gh pr create, gh pr edit), issues, review comments (gh pr comment, gh pr review), docs, READMEs, and messages to Slack or other tools.
 ---
 
 # Unslop

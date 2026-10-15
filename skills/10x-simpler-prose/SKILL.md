@@ -1,6 +1,6 @@
 ---
 name: 10x-simpler-prose
-description: Structurally reduce prose so every sentence is load-bearing. Delete filler sentences, inline single-use framing, state each point once. Use on every draft before posting it to GitHub, including PR titles and bodies (gh pr create, gh pr edit), issues, and review comment replies (gh pr comment, gh pr review, gh api .../comments). Also use when the user says "10x simpler prose", "distill this writing", "tighten this draft", or asks to make a document radically shorter without losing substance. Targets a file the user points at, the document being worked on, or a draft about to be posted.
+description: Use on every draft before posting it to GitHub, including PR titles and bodies (gh pr create, gh pr edit), issues, and review comment replies (gh pr comment, gh pr review, gh api .../comments). Also use when the user says "10x simpler prose", "distill this writing", "tighten this draft", or asks to make a document radically shorter without losing substance.
 argument-hint: "[path]"
 ---
 
