@@ -29,4 +29,4 @@ git -C $HOME/projects/lihbr/skills pull
 
 code is [mit](./LICENSE)
 
-`babysit-pr`, `file-pr`, `full-send`, `full-stop`, `leaving-pr-comments`, and `sol-loop` come from [t3dotgg/tstack](https://github.com/t3dotgg/tstack) at `1085050` (mit, copyright (c) 2026 Theo Browne)
+`babysit-pr`, `file-pr`, `full-send`, `full-stop`, `leaving-pr-comments`, and `sol-loop` come from [t3dotgg/tstack](https://github.com/t3dotgg/tstack) at `1085050`, with `full-send` and `file-pr` edited to call `10x-simpler-code` and `10x-simpler-prose` (mit, copyright (c) 2026 Theo Browne)
