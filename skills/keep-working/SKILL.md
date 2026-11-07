@@ -14,8 +14,9 @@ left falls to 5%, unless the user names another number.
 
 ## Start
 
-1. Run `scripts/usage-left` from this skill's directory, with `python` on
-   Windows. It prints the weekly percent left, like `19`. At or below the
+1. Run `scripts/usage-left` from this skill's directory. On Windows, run it
+   with `uv run --no-project python <path>`. It prints the weekly percent
+   left, like `19`. At or below the
    stop value, tell the user and do not start. If it fails, find out why and
    get the number another way. Never work without knowing it.
 2. Write a plan file in a gitignored folder or the scratchpad. It has the
