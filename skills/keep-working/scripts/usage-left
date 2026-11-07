@@ -1,0 +1,43 @@
+#!/usr/bin/env python3
+"""usage-left: print the percent of the Claude weekly usage limit left, e.g. `19`.
+
+Reads the Claude Code login (macOS keychain, else .credentials.json in
+CLAUDE_CONFIG_DIR or ~/.claude) and asks the endpoint behind /usage.
+Exits 1 with the error on stderr if usage cannot be read.
+"""
+
+import json
+import os
+import subprocess
+import sys
+import urllib.request
+from pathlib import Path
+
+
+def token() -> str:
+	if sys.platform == "darwin":
+		out = subprocess.run(
+			["security", "find-generic-password", "-s", "Claude Code-credentials", "-w"],
+			capture_output=True,
+			text=True,
+		)
+		if out.returncode == 0:
+			return json.loads(out.stdout)["claudeAiOauth"]["accessToken"]
+	home = Path(os.environ.get("CLAUDE_CONFIG_DIR") or Path.home() / ".claude")
+	return json.loads((home / ".credentials.json").read_text())["claudeAiOauth"]["accessToken"]
+
+
+try:
+	req = urllib.request.Request(
+		"https://api.anthropic.com/api/oauth/usage",
+		headers={
+			"Authorization": f"Bearer {token()}",
+			"anthropic-beta": "oauth-2025-04-20",
+			"User-Agent": "keep-working",
+		},
+	)
+	used = json.load(urllib.request.urlopen(req, timeout=15))["seven_day"]["utilization"]
+except Exception as e:
+	sys.exit(f"usage unreadable: {e}")
+
+print(f"{100 - used:g}")
