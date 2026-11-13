@@ -29,4 +29,4 @@ npx skills update
 code is [mit](./LICENSE)
 
 [^tstack]: from [t3dotgg/tstack](https://github.com/t3dotgg/tstack) at `1085050` (mit, copyright (c) 2026 Theo Browne), with edits to `full-send` and `file-pr`
-[^unslop]: from [cursor/plugins](https://github.com/cursor/plugins) (`pstack/skills/unslop`)
+[^unslop]: from [cursor/plugins](https://github.com/cursor/plugins) (`pstack/skills/unslop`) at `ec56937`, with our own description
