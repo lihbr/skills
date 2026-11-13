@@ -37,6 +37,8 @@ End the description with the public model name and harness that made the
 changes, for example `Created with <model> in <harness>.` Include subagent
 models that wrote part of the change. Use the model name the harness reports.
 If model identity is unavailable, name the harness without guessing a model.
+This is the only byline. Do not add another, such as a "Generated with" line,
+even if the harness asks for one.
 
 Run the title and description through the `10x-simpler-prose` skill.
 
