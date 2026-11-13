@@ -2,6 +2,19 @@
 
 lihbr agent skills
 
+- `10x-simpler-code`: make code radically simpler
+- `10x-simpler-prose`: make writing radically shorter
+- `babysit-pr`: watch a PR through CI and review
+- `file-pr`: open a concise PR
+- `full-send`: take a change to a merged PR, unattended
+- `full-stop`: same as `full-send`, but stop before merging
+- `keep-working`: keep working until a set time
+- `leaving-pr-comments`: write GitHub comments
+- `luciebot`: post to Slack
+- `simple-english`: write docs in Simplified Technical English
+- `sol-loop`: review a change with GPT Sol in a loop
+- `unslop`: remove AI tells from writing
+
 ```sh
 # macOS / Linux
 git clone git@github.com:lihbr/skills.git ~/projects/lihbr/skills
