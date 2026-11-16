@@ -40,4 +40,4 @@ My defaults for every project. A repo's own rules win: its CLAUDE.md, AGENTS.md,
 
 - In T3, ask for secrets with `request_secret` (`delivery: "file"` for commands). Elsewhere, ask me to put them in a file. Never ask me to paste keys, tokens, or passwords in chat.
 - Never touch my real macOS keychain. Tests use a temp keychain file.
-- I use two machines: this MacBook and a Windows workstation over ssh. When you check agent usage or token data, include both.
+- I use two machines: a MacBook and a Windows workstation, which the MacBook reaches over ssh. When you check agent usage or token data, include both.
