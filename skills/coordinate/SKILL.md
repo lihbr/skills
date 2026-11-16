@@ -12,15 +12,19 @@ The user should only need this thread. Every message they send to relay
 status, repeat a preference, or approve a routine step is a failure of this
 skill.
 
+Workers are never coordinators. Don't title them "* Master" and don't ask them
+to use this skill.
+
 ## State file
 
-Keep one state file from the first turn. Start from
-[references/state.md](references/state.md). Put it where the user says, or in
-a folder outside every git checkout, so it never shows up in a worker's diff.
-Never put it only in the scratchpad, which can be wiped.
+Keep one state file from the first turn, at
+`~/.claude/coordinators/<project-slug>.md` unless the user names another
+place. Start from [references/state.md](references/state.md). Give its path in
+your first message and in every scheduled check, so you can find it again
+after a compaction. After a compaction or a resume, read it first and trust it
+over your memory.
 
-Update it after every worker report, merge, and user decision. After a
-compaction or a resume, read it first and trust it over your memory.
+Update it after every worker report, merge, and user decision.
 
 The **feedback ledger** in it holds every preference and correction the user
 gives, in their words. It goes into every brief you send after that.
@@ -32,7 +36,7 @@ report to you, and you write.
 
 - Restate the goal as one sentence and get the user to confirm it.
 - If the work depends on a contract that another person or team owns (an
-  API, a route, a data model), launch only research threads until it is
+  API, a route, a data model), launch only research workers until it is
   written down and that owner agrees.
 - Check the facts you give workers: released versions (`npm view`), what a
   merge to `main` deploys in each repo, and who owns each environment.
@@ -46,8 +50,9 @@ report to you, and you write.
 - **Start with one worker.** Take it to an open PR and review that PR before
   you launch the rest. Feedback then goes into the next briefs instead of
   being sent after more PRs exist.
-- A worker that will open a PR gets its own worktree (`t3_thread_launch` with
-  a `workspaceStrategy`). Research workers may share the checkout.
+- **PR workers:** `t3_thread_launch` with the repo's `projectId` and
+  `workspaceStrategy: { type: "worktree", baseRef: "origin/<PR base>" }`.
+  **Research workers:** `delegate_task`, read-only.
 - Branch every step from the integration branch or the default branch, not
   from a sibling step. Merge the foundation steps first.
 - Give each shared resource one owner or a schedule. Examples: a dev
@@ -57,23 +62,23 @@ report to you, and you write.
 
 ## While workers run
 
-- **PR ownership.** A worker owns its PR. It runs `full-stop` and watches the
-  PR until its handoff, then unwatches. Don't watch a PR a worker still owns.
-  After the handoff, you own it: watch it with `watch_pull_request` until it
-  merges or closes.
-- **Live state.** At the start of each turn, read live state with
-  `gh pr view`, `list_thread_pull_requests`, and `t3_thread_read`. Don't rely
-  on a worker's last report.
-- **Stall check.** While workers run, use `schedule_task` to check them every
-  hour. Judge each worker by what it did (pushes, PR activity, new thread
-  items), not by its status text. If a worker has been idle longer than its
-  task should take, nudge or relaunch it, and log that.
+- **PR ownership.** A worker owns its PR. It runs `full-stop`, watches the PR,
+  and unwatches at its handoff. You never watch worker PRs.
+- **Live state.** Before each report to the user, read live state with
+  `gh pr view` and `t3_thread_read`. Don't rely on a worker's last report.
+- **Stall check.** While a worker is building, keep one `schedule_task` with a
+  `once` schedule about an hour out, and save its id in the state file. Each
+  check judges workers by what they did (pushes, PR activity, new thread
+  items), not by their status text. It re-arms itself only while a worker is
+  still building. Nudge an idle worker once. If that fails, tell the user. Never
+  relaunch a worker that owns a PR.
 - **No FYI relays.** A message wakes an idle worker. Send a worker only what
   changes its task.
 - **Late corrections.** If a correction applies to several workers, send it
   to each one, saying exactly what to change. Add it to the ledger.
-- **Overlap.** After pushes, diff sibling branches for overlapping edits, such
-  as `package.json` or build config. Give a shared fix to the foundation step.
+- **Overlap.** When workers report pushes, diff sibling branches for
+  overlapping edits, such as `package.json` or build config. Give a shared fix
+  to the foundation step.
 
 ## The user's time
 
@@ -84,15 +89,17 @@ report to you, and you write.
   Ask the user only about decisions that change the result, and give your
   recommendation.
 - **Do without asking:** update the state file, plan, and PR tables. Start Sol
-  reviews, relaunch a failed worker, and rerun a flaky check.
+  reviews and relaunch a worker that failed before opening a PR.
 - **Ask first:** anything irreversible or outside the repos. That includes
   prod, deleting data, force-pushing someone else's branch, and posting as
   the user.
-- **Batched approvals.** When the user says "merge C2, C3, C5", unwatch each
-  of those PRs, then send "full send" to its worker. The worker owns the PR
-  again and runs its own merge checks. Never merge from this thread.
-- **Review requests.** When worker PRs wait for human review, post one
-  `#pull-requests` request with `luciebot` that lists them all.
+- **Merges.** Every merge, into the integration branch too, needs the user's
+  go. When the user says "merge C2, C3, C5", send "full send" to each worker in
+  merge order. Quote the user's message and link to it. Wait for each merge
+  report before sending the next. Never merge from this thread.
+- **Review requests.** When the user says the PRs can go to review, post one
+  `#pull-requests` request with `luciebot` for the PRs on `prismicio` or
+  `prismicio-community` repos.
 
 ## Reports
 

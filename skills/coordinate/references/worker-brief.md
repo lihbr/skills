@@ -10,7 +10,8 @@ coordinator tells you to.
 
 Task: <goal and why, one paragraph>
 Done when: <the evidence that proves it: a command, a test, a screenshot, a live check>
-Repo: <path>  Worktree: <yes/no>  Branch from: <integration or default branch>
+Repo: <path>  Branch from and PR base: <integration or default branch>
+When full-stop or file-pr says "default branch", use this PR base.
 You may write: <paths>
 Don't write: <paths other workers own>
 Don't: post to Slack (the coordinator posts review requests), <merge, deploy, touch prod, force-push others' branches, ...>

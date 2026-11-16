@@ -57,12 +57,12 @@ a native Sol subagent and keep its ID. In Claude Code, use a custom subagent
 only if it is set up to run Sol. If no route runs Sol, report the blocker. Do
 not substitute a model, with one exception below.
 
-**Out of credits.** If Sol fails because the OpenAI or Codex account is out
-of credits or over its usage limit, run the same loop with Opus at high
-effort as the reviewer. This is the only allowed substitute. Say so in your
-report. The PR line then reads
-`Reviewed with sol-loop: <N> rounds with Opus (Sol out of credits). Verdict: approved`.
-Any other Sol failure is still a blocker.
+**Out of credits.** If Sol fails with an error saying the OpenAI or Codex
+account is out of credits, run the remaining rounds with Opus at high effort
+as the reviewer. A temporary rate limit, a timeout, or a missing route does
+not count. This is the only allowed substitute. Quote the error in your
+report. The PR line counts both models, for example
+`Reviewed with sol-loop: 1 round with <Sol model> and 2 with Opus (Sol out of credits). Verdict: approved`.
 
 Do not edit scoped files while review runs. Wait for the notice. Do not
 poll or start a second reviewer. Timeout, error, or no reply is not
