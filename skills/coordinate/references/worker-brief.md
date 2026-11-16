@@ -13,7 +13,7 @@ Done when: <the evidence that proves it: a command, a test, a screenshot, a live
 Repo: <path>  Worktree: <yes/no>  Branch from: <integration or default branch>
 You may write: <paths>
 Don't write: <paths other workers own>
-Don't: <merge, deploy, touch prod, force-push others' branches, post to Slack, ...>
+Don't: post to Slack (the coordinator posts review requests), <merge, deploy, touch prod, force-push others' branches, ...>
 Shared resources: <tenant, browser profile, or lock rules>
 Depends on: <other steps, and the exact strings or APIs you rely on>
 

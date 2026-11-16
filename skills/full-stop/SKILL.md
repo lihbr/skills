@@ -38,8 +38,7 @@ without the user. If someone else merged it, report that instead.
 
 - **Ready to merge:** the merge gate passes. Leave the PR open and unmerged.
 - **Waiting for required approval:** only human approval remains. Confirm
-  that this is the actual blocker. For a `prismicio` PR with no coordinator,
-  post the review request with `luciebot`.
+  that this is the actual blocker.
 - **Blocked:** explain what prevents readiness, what you tried, and what is
   needed. Follow full-send's rules for asking the user.
 
