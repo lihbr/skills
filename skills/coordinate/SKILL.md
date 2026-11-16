@@ -15,8 +15,9 @@ skill.
 ## State file
 
 Keep one state file from the first turn. Start from
-[references/state.md](references/state.md). Put it in the project folder or
-where the user says. Never put it only in the scratchpad, which can be wiped.
+[references/state.md](references/state.md). Put it where the user says, or in
+a folder outside every git checkout, so it never shows up in a worker's diff.
+Never put it only in the scratchpad, which can be wiped.
 
 Update it after every worker report, merge, and user decision. After a
 compaction or a resume, read it first and trust it over your memory.
@@ -88,9 +89,9 @@ report to you, and you write.
 - **Ask first:** anything irreversible or outside the repos. That includes
   prod, deleting data, force-pushing someone else's branch, and posting as
   the user.
-- **Batched approvals.** When the user says "merge C2, C3, C5", send
-  "full send" to each of those workers, so each one runs its own merge
-  checks. Never merge from this thread.
+- **Batched approvals.** When the user says "merge C2, C3, C5", unwatch each
+  of those PRs, then send "full send" to its worker. The worker owns the PR
+  again and runs its own merge checks. Never merge from this thread.
 - **Review requests.** When worker PRs wait for human review, post one
   `#pull-requests` request with `luciebot` that lists them all.
 

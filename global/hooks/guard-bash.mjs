@@ -20,7 +20,7 @@ const block = (reason) => {
 
 if (/\bgh\s+(pr\s+(create|edit|comment)|api)\b/.test(command)) {
 	let text = command;
-	for (const [, , path] of command.matchAll(/(?:--body-file|-F)[=\s]+(?:body=@)?(["']?)([^\s"']+)\1/g)) {
+	for (const [, path] of command.matchAll(/(?:--body-file|--field|-F)[=\s]+["']?(?:body=@)?["']?([^\s"']+)/g)) {
 		try {
 			text += readFileSync(path, "utf8");
 		} catch {}
@@ -33,10 +33,10 @@ if (/\bgh\s+(pr\s+(create|edit|comment)|api)\b/.test(command)) {
 }
 
 const keychain =
-	/\bsecurity\s+(add-|delete-|find-(generic|internet)-password|import|export|unlock-keychain|default-keychain|set-keychain)/;
-const tempKeychain = /(\/tmp\/|\/var\/folders\/|\$TMPDIR|\$\{TMPDIR\})\S*\.keychain/;
-if (keychain.test(command) && !tempKeychain.test(command)) {
+	/(^|[;&|(]\s*|sudo\s+|\/)security\s+(add-|delete-|find-(generic|internet)-password|import|export|unlock-keychain|default-keychain|set-keychain)/m;
+const tempKeychain = /(\/tmp\/|\/var\/folders\/|\$\{?TMPDIR|mktemp)/;
+if (keychain.test(command) && !(tempKeychain.test(command) && /\.keychain/.test(command))) {
 	block(
-		"this touches the real macOS keychain. Use a temp keychain file (security create-keychain \"$TMPDIR/test.keychain\") or a temp HOME, and pass it explicitly.",
+		"this touches the real macOS keychain. Use a temp keychain file (security create-keychain -p \"\" \"$TMPDIR/test.keychain\") and pass its path to every security call.",
 	);
 }

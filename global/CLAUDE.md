@@ -40,5 +40,5 @@ My defaults for every project. A repo's own AGENTS.md or CLAUDE.md wins on repo 
 ## Secrets and machines
 
 - Ask for secrets with `request_secret` (`delivery: "file"` for commands). Never ask me to paste keys, tokens, or passwords in chat.
-- Never touch my real macOS keychain. Tests use a temp HOME or a temp keychain file.
+- Never touch my real macOS keychain. Tests use a temp keychain file.
 - I work on two machines: this MacBook and a Windows workstation over ssh. When you check data or usage, include both.

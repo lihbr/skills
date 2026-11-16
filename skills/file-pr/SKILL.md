@@ -48,12 +48,14 @@ secrets and private details.
 Write the description to a `mktemp` file, not a fixed path.
 
 When the change affects UI, add before and after screenshots. Capture them
-yourself, full page at 1512×982 unless the change needs other sizes, and save
-them outside the repo. In the description, put them in a table with local
-paths, such as `| Before | After |` then `| ![Before](./before.png) | ![After](./after.png) |`.
+yourself, full page at 1512×982 unless the change needs other sizes. Save them
+in the same `mktemp -d` folder as the description, outside the repo. In the
+description, put them in a table with paths relative to that folder, such as
+`| Before | After |` then `| ![Before](./before.png) | ![After](./after.png) |`.
 Pass each file to `gh pr create` or `gh pr edit` with
 `--attach <path>`, next to `--body-file`. gh uploads the files and replaces
-the local paths with their URLs. This needs gh 2.103 or later. Uploads cannot
+the local paths with their URLs. This needs gh 2.103 or later. If gh exits
+non-zero, check whether it printed a PR URL before you retry. Uploads cannot
 be deleted, and anyone with access to the repo can see them. Look at every
 image for secrets, tokens, and customer data before you attach it.
 

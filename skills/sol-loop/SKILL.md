@@ -60,8 +60,9 @@ not substitute a model, with one exception below.
 **Out of credits.** If Sol fails because the OpenAI or Codex account is out
 of credits or over its usage limit, run the same loop with Opus at high
 effort as the reviewer. This is the only allowed substitute. Tell the user
-once, or the coordinator if one launched you. The PR line names Opus and adds
-`(Sol out of credits)`. Any other Sol failure is still a blocker.
+once, or the coordinator if one launched you. The PR line then reads
+`Reviewed with sol-loop: <N> rounds with Opus (Sol out of credits). Verdict: approved`.
+Any other Sol failure is still a blocker.
 
 Do not edit scoped files while review runs. Wait for the notice. Do not
 poll or start a second reviewer. Timeout, error, or no reply is not
