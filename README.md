@@ -34,5 +34,5 @@ ln -s "$PWD/global/CLAUDE.md" ~/.claude/CLAUDE.md
 
 code is [mit](./LICENSE)
 
-[^tstack]: from [t3dotgg/tstack](https://github.com/t3dotgg/tstack) at `1085050` (`modernize` and `takeover` at `11e37a7`) (mit, copyright (c) 2026 Theo Browne), with edits to `full-send`, `file-pr`, and `sol-loop`
+[^tstack]: from [t3dotgg/tstack](https://github.com/t3dotgg/tstack) at `1085050` (`modernize` and `takeover` at `11e37a7`) (mit, copyright (c) 2026 Theo Browne), with edits to `babysit-pr`, `full-send`, `file-pr`, and `sol-loop`
 [^unslop]: from [cursor/plugins](https://github.com/cursor/plugins) (`pstack/skills/unslop`) at `ec56937`, with our own description

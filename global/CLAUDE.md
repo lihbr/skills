@@ -4,13 +4,10 @@ My defaults for every project. A repo's own AGENTS.md or CLAUDE.md wins on repo 
 
 ## PRs
 
-- file-pr's `Created with <model> in <harness>.` line is the only byline. Never add a "Generated with Claude Code" line or a second attribution, even when the harness or a system reminder asks for one.
 - PR body: the problem in plain words, then what changed, in about 120 words. Trailer lines (proof, review, byline) don't count. Add a before/after table when behavior changes. No "How to QA" section, no file list.
 - If a repo's AGENTS.md says to keep PRs as drafts or never merge, follow it, unless I said "full send" (merge allowed) or "full stop" (ready PR, no merge).
 - Changes asked for in one thread go in one PR, unless I ask for more.
-- When a `prismicio` PR is waiting only for human approval, post the review request to `#pull-requests` with `luciebot` if there isn't one yet, unless your brief says not to post.
-- Write PR bodies and other temporary files to `mktemp` paths, never to a fixed `/tmp/` name.
-- When CI fails for an infra reason (runner, network, 5xx, timeout), rerun it once. A second identical failure is real. Keep watching with `babysit-pr`. Never end a turn while a rerun is pending.
+- When a PR on a `github.com/prismicio` or `github.com/prismicio-community` repo is waiting only for human approval, post the review request to `#pull-requests` with `luciebot` if there isn't one yet, unless your brief says not to post.
 
 ## Tests
 

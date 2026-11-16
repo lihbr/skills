@@ -80,6 +80,10 @@ finding against the source before changing code. Fix real findings and CI
 failures, distinguish repository failures from infrastructure flakes, and reply
 with a written reason when dismissing false positives.
 
+Rerun an infrastructure flake (runner, network, 5xx, timeout) once. A second
+identical failure is real. Keep waiting with the watcher after a rerun; never
+end the turn while it is pending.
+
 If the repo has `.macroscope/check-run-agents/*.md`, read those rules before you
 reply to a Macroscope finding. Its findings cite them.
 
