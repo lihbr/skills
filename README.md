@@ -29,27 +29,12 @@ npx skills update
 (cd skills && for s in */; do rm -f "../${s%/}.skill"; zip -qr "../${s%/}.skill" "$s" -x '*.DS_Store'; done)
 ```
 
-## Global rules and hooks
+## Global rules
 
-`global/CLAUDE.md` holds the rules for every project. `global/hooks/guard-bash.mjs` blocks a second "Generated with Claude Code" byline in PR bodies, and blocks use of the real macOS keychain. Set them up once per machine from a clone of this repo:
+`global/CLAUDE.md` holds the rules for every project. Link it once per machine from a clone of this repo:
 
 ```sh
 ln -s "$PWD/global/CLAUDE.md" ~/.claude/CLAUDE.md
-```
-
-Then add the hook to `~/.claude/settings.json`, using the clone's absolute path:
-
-```json
-{
-	"hooks": {
-		"PreToolUse": [
-			{
-				"matcher": "Bash",
-				"hooks": [{ "type": "command", "command": "node /abs/path/to/skills/global/hooks/guard-bash.mjs" }]
-			}
-		]
-	}
-}
 ```
 
 code is [mit](./LICENSE)
