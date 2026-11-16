@@ -1,6 +1,6 @@
 ---
 name: luciebot
-description: Use when the user mentions luciebot or "lucie bot", or asks to post, submit, or send something to Slack, such as a PR for review in #pull-requests.
+description: Use when the user mentions luciebot or "lucie bot", or asks to post, submit, or send something to Slack, such as a PR for review in #pull-requests. Also use when full-stop hands off a prismicio PR as waiting for approval.
 ---
 
 # luciebot
@@ -18,8 +18,15 @@ luciebot is Lucie's bot in the Prismic Slack workspace. Its MCP server posts as
   luciebot joined. Read with the Slack connector instead.
 - To fix a post, use luciebot's `update_message` on the same `ts`. Do not
   delete and repost.
-- Only post when the user asks. Reply with the permalink that
-  `send_message` returns.
+- Only post when the user asks, with one exception: a PR review request
+  (below). Reply with the permalink that `send_message` returns.
+
+## When to post a review request on your own
+
+Post one when `full-stop` hands off a PR in the `prismicio` org as "Waiting
+for required approval". Check `#pull-requests` first so you don't post a
+duplicate. In a coordinator setup, the coordinator posts one request that lists
+all its workers' PRs, and the workers don't post.
 
 ## Known IDs
 

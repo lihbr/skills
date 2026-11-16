@@ -45,6 +45,18 @@ Run the title and description through the `10x-simpler-prose` skill.
 Before submission, check the title, description, quotes, and attachments for
 secrets and private details.
 
+Write the description to a `mktemp` file, not a fixed path.
+
+When the change affects UI, add before and after screenshots. Capture them
+yourself, full page at 1512×982 unless the change needs other sizes, and save
+them outside the repo. In the description, put them in a table with local
+paths, such as `| Before | After |` then `| ![Before](./before.png) | ![After](./after.png) |`.
+Pass each file to `gh pr create` or `gh pr edit` with
+`--attach <path>`, next to `--body-file`. gh uploads the files and replaces
+the local paths with their URLs. This needs gh 2.103 or later. Uploads cannot
+be deleted, and anyone with access to the repo can see them. Look at every
+image for secrets, tokens, and customer data before you attach it.
+
 Open a real PR rather than a draft so review bots run. If `gh pr create` fails
 because the GraphQL rate limit is used up, open it through REST with
 `gh api repos/<owner>/<repo>/pulls -f title=... -f head=... -f base=... -F body=@<file>`. If the user also asked

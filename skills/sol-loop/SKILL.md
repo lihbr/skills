@@ -55,7 +55,13 @@ only if exposed. Use `delegate_task` every round (`role: "review"`,
 If T3 tools are not listed, try one direct capability call. Outside T3, use
 a native Sol subagent and keep its ID. In Claude Code, use a custom subagent
 only if it is set up to run Sol. If no route runs Sol, report the blocker. Do
-not substitute a model.
+not substitute a model, with one exception below.
+
+**Out of credits.** If Sol fails because the OpenAI or Codex account is out
+of credits or over its usage limit, run the same loop with Opus at high
+effort as the reviewer. This is the only allowed substitute. Tell the user
+once, or the coordinator if one launched you. The PR line names Opus and adds
+`(Sol out of credits)`. Any other Sol failure is still a blocker.
 
 Do not edit scoped files while review runs. Wait for the notice. Do not
 poll or start a second reviewer. Timeout, error, or no reply is not
