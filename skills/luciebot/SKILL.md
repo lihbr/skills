@@ -18,8 +18,8 @@ luciebot is Lucie's bot in the Prismic Slack workspace. Its MCP server posts as
   luciebot joined. Read with the Slack connector instead.
 - To fix a post, use luciebot's `update_message` on the same `ts`. Do not
   delete and repost.
-- Only post when the user asks. Reply with the permalink that
-  `send_message` returns.
+- Only post when the user asks, or when the user's CLAUDE.md says to post a
+  review request. Reply with the permalink that `send_message` returns.
 
 ## Known IDs
 

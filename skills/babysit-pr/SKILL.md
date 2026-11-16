@@ -80,6 +80,10 @@ finding against the source before changing code. Fix real findings and CI
 failures, distinguish repository failures from infrastructure flakes, and reply
 with a written reason when dismissing false positives.
 
+Rerun an infrastructure flake once with `gh run rerun <id> --failed`. Flakes
+are a lost runner, a network or 5xx error, or a job timeout before tests ran.
+A second identical failure is real. After the rerun, keep watching as above.
+
 If the repo has `.macroscope/check-run-agents/*.md`, read those rules before you
 reply to a Macroscope finding. Its findings cite them.
 
