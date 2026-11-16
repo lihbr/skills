@@ -1,12 +1,13 @@
 # Global rules
 
-My defaults for every project. A repo's own rules win: its CLAUDE.md, AGENTS.md, Cursor rules, and PR template. When they conflict on safety, the stricter rule wins.
+My defaults for every project. A repo's own rules win: its CLAUDE.md, AGENTS.md, Cursor rules, and PR template. Read them when you start work in a repo. When they conflict on safety, the stricter rule wins, unless I override it explicitly.
 
 ## PRs
 
-- Before opening a PR, read the repo's AGENTS.md. Its draft and merge rules apply to you, even when they are written for Cursor. Override them only when I said "full send" (merge allowed) or "full stop" (ready PR, no merge).
+- A repo's draft and merge rules apply to you, even when they are written for Cursor. Override them only when I said "full send" (merge allowed) or "full stop" (ready PR, no merge).
 - PR body: the problem in plain words, then what changed, in about 120 words. Trailer lines (proof, review, byline) don't count. Add a before/after table when behavior changes. No "How to QA" section and no file list, unless the repo's PR template asks for them.
 - Changes asked for in one thread go in one PR, unless I ask for more. Coordinator threads are the exception.
+- Any screenshot you attach on GitHub follows file-pr's screenshot rules.
 - When a non-draft PR you opened on a `github.com/prismicio` or `github.com/prismicio-community` repo waits only for human approval, search `#pull-requests` for its URL. If it isn't there, post the review request with `luciebot`. Skip this when your brief says not to post.
 
 ## Tests

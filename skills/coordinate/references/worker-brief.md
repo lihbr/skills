@@ -4,7 +4,8 @@ Fill in every field. Workers get no history, so the brief is all they know.
 
 ```
 You are a worker for the coordinator thread <link or id>.
-Report to it with t3_thread_send when you open a PR, hand off, or are blocked.
+Report to it with t3_thread_send when you open a PR, hand off, merge, or are
+blocked. Don't use the coordinate skill yourself.
 Ask it your questions instead of the user. Use AskUserQuestion only if the
 coordinator tells you to.
 
