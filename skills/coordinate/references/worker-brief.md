@@ -17,7 +17,7 @@ Don't: post to Slack (the coordinator posts review requests), <merge, deploy, to
 Shared resources: <tenant, browser profile, or lock rules>
 Depends on: <other steps, and the exact strings or APIs you rely on>
 
-Ship it with "full stop": load <absolute path>/full-stop/SKILL.md.
+Ship it with the full-stop skill ("full stop").
 Stop at its handoff. The user decides the merge.
 
 New public surface (events, env vars, exports, flags, routes, docs pages):

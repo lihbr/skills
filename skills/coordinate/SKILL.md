@@ -42,8 +42,7 @@ report to you, and you write.
 ## Launching workers
 
 - Build every brief from [references/worker-brief.md](references/worker-brief.md).
-  Paste the whole ledger. Give the absolute path of each skill the worker must
-  load.
+  Paste the whole ledger. Name each skill the worker must use.
 - **Start with one worker.** Take it to an open PR and review that PR before
   you launch the rest. Feedback then goes into the next briefs instead of
   being sent after more PRs exist.
