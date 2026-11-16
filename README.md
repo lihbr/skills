@@ -27,13 +27,8 @@ npx skills update
 
 # Build .skill zips to upload on claude.ai, from a clone of this repo
 (cd skills && for s in */; do rm -f "../${s%/}.skill"; zip -qr "../${s%/}.skill" "$s" -x '*.DS_Store'; done)
-```
 
-## Global rules
-
-`global/CLAUDE.md` holds the rules for every project. Link it once per machine from a clone of this repo:
-
-```sh
+# Link the global rules, from a clone of this repo
 ln -s "$PWD/global/CLAUDE.md" ~/.claude/CLAUDE.md
 ```
 
