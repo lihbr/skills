@@ -105,9 +105,6 @@ report to you, and you write.
   go. When the user says "merge C2, C3, C5", send "full send" to each worker in
   merge order. Quote the user's message and link to it. Wait for each merge
   report before sending the next. Never merge from this thread.
-- **Review requests.** When the user says the PRs can go to review, search
-  `#pull-requests` for their URLs, then post one request with `luciebot` for
-  the missing PRs on `prismicio` or `prismicio-community` repos.
 
 ## Reports
 

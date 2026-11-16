@@ -15,7 +15,7 @@ Repo: <path>  Branch from and PR base: <integration or default branch>
 When full-stop or file-pr says "default branch", use this PR base.
 You may write: <paths>
 Don't write: <paths other workers own>
-Don't: post to Slack (the coordinator posts review requests), <merge, deploy, touch prod, force-push others' branches, ...>
+Don't: <merge, deploy, touch prod, force-push others' branches, ...>
 Shared resources: <tenant, browser profile, or lock rules>
 Depends on: <other steps, and the exact strings or APIs you rely on>
 
