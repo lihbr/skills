@@ -1,6 +1,6 @@
 ---
 name: luciebot
-description: Use when the user mentions luciebot or "lucie bot", or asks to post, submit, or send something to Slack, such as a PR for review in #pull-requests.
+description: 'Use when the user mentions luciebot or "lucie bot", asks to post, submit, or send something to Slack, such as a PR for review in #pull-requests, or asks for their team update.'
 ---
 
 # luciebot
@@ -26,6 +26,7 @@ luciebot is Lucie's bot in the Prismic Slack workspace. Its MCP server posts as
 - Lucie: `<@U014KACFM6K>`
 - `#pull-requests`: `C0BFJ1YF61J`
 - `#sre-requests`: `C06UQRLAQF3`
+- `#team-devx`: `C014VAACCQL`
 
 Find anyone else with the Slack connector's user search. Do not guess IDs.
 
@@ -75,9 +76,25 @@ For a request in another channel, such as a deploy in `#sre-requests`:
 
 - Read the channel's purpose and a few recent posts with the Slack connector
   first, and match how people write there.
-- Ask only for what the user asked for. Do not add side questions or context
-  the user did not request.
-- Keep it short: a greeting, the ask, and the one detail readers need to act,
-  such as a commit, a PR link, or a risk.
+- Ask only for what the user asked for. Do not add side questions.
+- Keep it short: a greeting, why you need it in one sentence, the ask, and
+  the one detail readers need to act, such as a commit, a PR link, or a risk.
 - Run the draft through the `10x-simpler-prose` and `unslop` skills before
   posting.
+
+## Team update
+
+A short post in `#team-devx` on what Lucie shipped, about every two weeks.
+
+- Read her last update there and match its shape: a greeting line, three to
+  five groups with an emoji and a title, a few bullets each, and her closing
+  line.
+- Cover the time since that update. Sources: her merged PRs
+  (`gh search prs --author @me --merged --merged-at ">=<date>"`), the
+  coordinator state files in `~/.claude/coordinators/`, and the status line of
+  each plan they link.
+- Group by project, not by repo or PR. Each bullet says what changed for
+  users or the team, with one link at most.
+- Leave out dependency updates, chores, her personal repos, and how the work
+  was done.
+- Show her the draft before posting.

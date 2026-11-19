@@ -1,0 +1,6 @@
+- This folder holds clones of Prismic's repos. Worker threads run in worktrees and never load this file, so put what they need in their brief.
+- Shape a cross-repo project as: SRE before, PR before, SRE middle, PR after, SRE after. Drop the steps it doesn't need.
+- Before changing a token, cookie, endpoint, or schema, list who reads it. `git grep` every clone here and run `gh search code --owner prismicio`. Clone a consumer that is missing.
+- SRE requests: one Notion page each. Top: why we need it, in two sentences. Then a checklist of exact names and values, with the type of each (SecureString or String). Then a toggle with the prompt SRE's agent runs. Never write a secret's value. Say where it lives.
+- Notion pages: write for a person who scans. Top: one dated status line, edited in place. Then at most 300 words on what, why, and what's next, with the PR table.
+- Put IDs, SHAs, commands, logs, the decision history, and anything written for agents in `<toggle heading="h3">` blocks. Notion stores `<details>` as plain text.
