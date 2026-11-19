@@ -20,10 +20,13 @@ to use this skill.
   asks.
 - **Consumers.** Before the plan changes a token, cookie, endpoint, or schema,
   search every local clone and the org's code for what reads it.
-- **Contracts.** If the work depends on a contract another team owns, launch
-  only research workers until it is written down and that team agrees.
-- **Facts.** Check what you tell workers: released versions (`npm view`), what
-  a merge to the default branch deploys, and who owns each environment.
+- **Contracts.** If workers will build on an API, route, or data model that
+  doesn't exist yet, write it in the plan first.
+- **Facts.** Check what you tell workers: released versions (`npm view`) and
+  what a merge to the default branch deploys.
+- **Other people.** Assume a decision is the user's to make. Don't plan a
+  step that waits on another person or team unless the user named them. If
+  you think someone else must agree, say so once with your recommendation.
 
 ## State file
 
