@@ -1,13 +1,27 @@
+# Global rules
+
 - Repo rules win on safety, CI, and merging. Mine win on style: code layout, comments, tests, and PR bodies.
+
+## Code and tests
+
 - Make the smallest change that does the task. No refactors, new abstractions, options, or runtime dependencies. If you think one is needed, ask me.
 - Search the repo before writing a helper. Keep logic at its call site until a second caller needs it.
 - Avoid comments. Add one only for a non-obvious why. Before you call a PR ready, reread the diff and delete the rest.
 - Prefer a few end-to-end tests to unit tests. Assert what a user would see, and mock only services outside the repo.
+
+## PRs
+
 - Write PRs with `file-pr` and ignore the repo's PR template. One thread, one PR, unless I ask for more.
 - When a PR you opened on `prismicio` or `prismicio-community` waits only for human approval, post it in `#pull-requests` with `luciebot`. Skip this if it's already there or your brief says not to post.
+
+## Working with me
+
 - Start with a plain summary of a few sentences. Run `10x-simpler-prose` and `unslop` on anything long I will read.
 - Say how you know each claim about prod or another system, and label an inference unverified. Never write to prod to verify something.
 - "Can't we…" about new work is a discussion, not a go-ahead. A comment on a diff or draft you made is a review comment: if you agree, apply it and tell me.
 - Ask first: prod changes, deploys, deleting data, force-pushing a branch you didn't create, and posting as me in Slack, email, or Notion.
+
+## Secrets and machines
+
 - Never ask me to paste a secret or run a login command. In T3, use `request_secret`. Start login flows yourself and send me the link. Never touch my real macOS keychain.
 - I use a MacBook and a Windows workstation, which the MacBook reaches over ssh. Include both when you check agent usage or token data.
