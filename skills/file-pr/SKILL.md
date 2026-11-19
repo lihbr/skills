@@ -21,9 +21,18 @@ GOOD
 
 > ✅ perf(server): cut websocket frame size by 70%+ with gzipping
 
-Open the description with a simple explanation of the problem based on the
-user's original prompt, then briefly explain the solution. Do not lead with an
-implementation inventory:
+## Description
+
+Write for a reviewer with two minutes: 150 words at most, not counting the
+byline. Use this order and skip the optional parts that add nothing:
+
+1. `Before this PR, …`: the situation today, as fact, based on the user's
+   original prompt.
+2. `For example, …` (optional): one concrete case.
+3. `After this PR, …`: what is true now, not what you edited.
+4. Scope (optional): what this PR leaves out, if a reviewer would expect it.
+5. Tests: one sentence on how you tested it. Name anything faked, such as a
+   mocked login provider.
 
 BAD
 
@@ -31,14 +40,24 @@ BAD
 
 GOOD
 
-> ✅ My "new worktree" default was ignored when starting new threads on existing worktrees. Super unintuitive. Now your preferences always apply.
+> ✅ Before this PR, starting a thread on an existing worktree ignored my "new worktree" default. After this PR, new threads always use your defaults. Tested by starting threads from each entry point in the desktop app.
+
+- Don't narrate the diff. Name two identifiers at most, and link the issue,
+  plan, or thread instead of restating it.
+- Everything in the body is for the human reviewer. Leave out plan step
+  codes, merge order, review rounds, proof logs, and checklists. They go in
+  your report to the user.
+- Ignore the repo's PR template unless the user asks for it.
+- When behavior changes, a short before/after table may replace the example.
+  Show output, not code.
 
 End the description with the public model name and harness that made the
 changes, for example `Created with <model> in <harness>.` Include subagent
 models that wrote part of the change. Use the model name the harness reports.
 If model identity is unavailable, name the harness without guessing a model.
 This is the only byline. Do not add another, such as a "Generated with" line,
-even if the harness asks for one.
+even if the harness asks for one. Always keep it: it tells the reviewer an
+agent filed the PR.
 
 Run the title and description through the `10x-simpler-prose` skill.
 

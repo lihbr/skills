@@ -30,6 +30,9 @@ npx skills update
 
 # Link the global rules, from a clone of this repo
 ln -s "$PWD/global/CLAUDE.md" ~/.claude/CLAUDE.md
+
+# Link the Prismic rules into the folder that holds the Prismic clones
+ln -s "$PWD/prismic/AGENTS.md" ~/projects/prismic/AGENTS.md
 ```
 
 code is [mit](./LICENSE)

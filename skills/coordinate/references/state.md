@@ -1,26 +1,32 @@
 # <Project> coordinator state
 
-Thread: <coordinator link>  Updated: <date time>
+Thread: <coordinator link>  Updated: <date time>  Hourly check: <scheduled task id>
+
+This file describes now. Replace stale lines. Don't append under them.
 
 ## Goal
 
-<one sentence the user confirmed>
+<one sentence>
 
-## Contract and decisions
+## Decisions
 
 - <date>: <decision>. Source: <user message, PR, doc>
 
+## Consumers
+
+- <token, endpoint, or schema>: <what reads it>. Found by: <search>
+
 ## Registry
 
-| Worker | Thread | Repo | Branch | Owns paths | PR | State | Last activity |
-|---|---|---|---|---|---|---|---|
+| Worker | Thread | Repo | PR before | PR after | State | Last activity |
+|---|---|---|---|---|---|---|
 
 States: researching, building, PR open, handed off, merged, stalled, closed.
 
-## Feedback ledger
+## Corrections
 
-Every preference or correction from the user, word for word, with the date.
-Paste all of it into every new brief.
+What the user corrected in this project, in their words. Add these to each new
+brief.
 
 - <date>: "<quote>"
 
@@ -32,4 +38,4 @@ Things only the user can do. Send them in one batch.
 
 ## Facts checked
 
-- <repo>: merging to main deploys <where>. Checked: <how>
+- <repo>: merging to <branch> deploys <where>. Checked: <how>
