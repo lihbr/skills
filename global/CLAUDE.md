@@ -11,8 +11,8 @@
 
 ## PRs
 
-- Write PRs with `file-pr` and ignore the repo's PR template. One thread, one PR, unless I ask for more.
-- When a PR you opened on `prismicio` or `prismicio-community` waits only for human approval, post it in `#pull-requests` with `luciebot`. Skip this if it's already there or your brief says not to post.
+- Write PRs with `file-pr`. One thread, one PR, unless I ask for more.
+- When a PR you opened on `prismicio` or `prismicio-community` waits only for human approval, post it in `#pull-requests` with `luciebot`, unless it's already there or your brief says not to.
 
 ## Working with me
 

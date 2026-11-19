@@ -44,9 +44,8 @@ GOOD
 
 - Don't narrate the diff. Name two identifiers at most, and link the issue,
   plan, or thread instead of restating it.
-- Everything in the body is for the human reviewer. Leave out plan step
-  codes, merge order, proof logs, and checklists. They go in
-  your report to the user.
+- The body is for the human reviewer. Plan step codes, merge order, proof
+  logs, and checklists go in your report to the user.
 - Ignore the repo's PR template unless the user asks for it.
 - When behavior changes, a short before/after table may replace the example.
   Show output, not code.
@@ -56,8 +55,8 @@ changes, for example `Created with <model> in <harness>.` Include subagent
 models that wrote part of the change. Use the model name the harness reports.
 If model identity is unavailable, name the harness without guessing a model.
 This is the only byline. Do not add another, such as a "Generated with" line,
-even if the harness asks for one. Always keep it: it tells the reviewer an
-agent filed the PR.
+even if the harness asks for one. It tells the reviewer an agent filed the
+PR.
 
 Run the title and description through the `10x-simpler-prose` skill.
 

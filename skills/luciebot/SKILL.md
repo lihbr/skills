@@ -97,4 +97,4 @@ A short post in `#team-devx` on what Lucie shipped, about every two weeks.
   users or the team, with one link at most.
 - Leave out dependency updates, chores, her personal repos, and how the work
   was done.
-- Show her the draft. Post only after she approves it.
+- Show her the draft before posting.

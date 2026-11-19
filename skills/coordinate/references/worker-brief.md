@@ -17,12 +17,8 @@ Don't: <merge, deploy, touch prod, force-push others' branches, ...>
 Shared resources: <tenant, browser profile, or lock rules>
 Depends on: <other repos' PRs, and the exact strings or APIs you rely on>
 
-Ship each PR with the full-stop skill ("full stop").
-Stop at its handoff. The user decides the merge.
-Wait on your PR with watch_pull_request, never a shell sleep.
-
-Before you report a PR: reread the diff, delete every comment that describes
-the code, and check the body against file-pr.
+Ship each PR with the full-stop skill ("full stop"). The user decides the
+merge. Wait on your PR with watch_pull_request, never a shell sleep.
 
 New public surface (events, env vars, exports, flags, routes, docs pages) and
 new folders or modules: don't build them. Ask the coordinator, and say which

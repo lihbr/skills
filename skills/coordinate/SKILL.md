@@ -19,8 +19,7 @@ to use this skill.
   change. One worker per repo owns both. Split further only when the user
   asks.
 - **Consumers.** Before the plan changes a token, cookie, endpoint, or schema,
-  list everything that reads it. Search every local clone and the org's code
-  (`gh search code --owner <org>`), not only the repos in the plan.
+  search every local clone and the org's code for what reads it.
 - **Contracts.** If the work depends on a contract another team owns, launch
   only research workers until it is written down and that team agrees.
 - **Facts.** Check what you tell workers: released versions (`npm view`), what
@@ -47,8 +46,8 @@ describes now, so replace a stale line and don't append under it.
   `workspaceStrategy: { type: "worktree", baseRef: "origin/<PR base>", startFromOrigin: true }`.
   **Research workers:** `delegate_task` with `role: "research"`, and a task
   that starts with "Read only. Do not edit, commit, or push."
-- Give each shared resource one owner or a schedule: a dev tenant, a browser
-  profile, a status page. Only you write the plan and the PR table.
+- Give each shared resource one owner: a dev tenant, a browser profile. Only
+  you write the plan and the PR table.
 - **Answer workers yourself** from the plan, the code, the user's rules, or
   other threads. The exception is new surface: a flag, env var, route, export,
   folder, or module. Answer no and find the smaller change. If it is really
@@ -61,27 +60,23 @@ describes now, so replace a stale line and don't append under it.
   file. In each check, judge workers by pushes and PR activity, not status
   text. Nudge an idle worker once, then relaunch it if it has no PR, or tell
   the user. Re-arm with the saved `scheduledTaskId`. Stop once every worker
-  has handed off. A PR that only waits for review or merge needs no check.
-  If the user asks for quiet, send fewer messages and keep the check.
-- **Review before "ready".** A worker ships with `full-stop` and owns its PR
-  until handoff. Before you call a PR ready, check that CI is green on its
-  head, then read its diff and body against the user's rules. Look for
+  has handed off. If the user asks for quiet, send fewer messages and keep
+  the check.
+- **Review before "ready".** Before you call a PR ready, check that CI is
+  green on its head, then read its diff and body against the user's rules:
   comments that describe the code, new flags or modules, tests that mock what
-  they should run, and a body that doesn't follow `file-pr`. Send fixes to the
+  they should run, a body that doesn't follow `file-pr`. Send fixes to the
   worker first.
 
 ## The user's time
 
-- **Stay quiet.** Each worker message starts a turn here. End those turns in
-  one short line. Write to the user only when something needs them, or when
-  every worker is idle or done.
-- **Batch human tasks.** Logins, secrets, on-screen checks, requests to other
-  teams, and approvals go in one message, riskiest first, each with the exact
-  action. Say what is coming before you open secret or login cards. Ask for
-  everything you need from prod in one round.
+- **Stay quiet.** Each worker message starts a turn here. End it in one short
+  line, unless something needs the user or every worker is done.
+- **Batch human tasks.** Logins, secrets, on-screen checks, prod values,
+  requests to other teams, and approvals go in one message, riskiest first,
+  each with the exact action. Send it before you open secret or login cards.
 - **Merges.** Every merge needs the user's go. Send "full send" to each worker
   in merge order, quoting the user's message. Wait for each merge report
   before sending the next. Never merge from this thread.
-- **Reports.** Read live state first with `gh pr view` and `t3_thread_read`,
-  not a worker's last report. Then give the human tasks and the registry
-  table, nothing else.
+- **Reports.** Read live state first with `gh pr view` and `t3_thread_read`.
+  Then give the human tasks and the registry table, nothing else.
