@@ -56,13 +56,13 @@ describes now, so replace a stale line and don't append under it.
 - **Send little.** A message wakes an idle worker. Send only what changes its
   task. When a correction applies to several workers, go down the registry row
   by row.
-- **Hourly check.** While a worker is building or a PR is open, keep one
-  `schedule_task` with a `once` schedule about an hour out, and save its id in
-  the state file. In each check, judge workers by pushes and PR activity, not
-  status text. Send red CI and review requests to the PR's worker. Nudge an
-  idle worker once, then relaunch it if it has no PR, or tell the user. Re-arm
-  with the saved `scheduledTaskId`. If the user asks for quiet, send fewer
-  messages and keep the check.
+- **Hourly check.** While a worker is building, keep one `schedule_task`
+  with a `once` schedule about an hour out, and save its id in the state
+  file. In each check, judge workers by pushes and PR activity, not status
+  text. Nudge an idle worker once, then relaunch it if it has no PR, or tell
+  the user. Re-arm with the saved `scheduledTaskId`. Stop once every worker
+  has handed off. A PR that only waits for review or merge needs no check.
+  If the user asks for quiet, send fewer messages and keep the check.
 - **Review before "ready".** A worker ships with `full-stop` and owns its PR
   until handoff. Before you call a PR ready, check that CI is green on its
   head, then read its diff and body against the user's rules. Look for
