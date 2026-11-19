@@ -61,7 +61,8 @@ not substitute a model, with one exception below.
 account is out of credits, run the remaining rounds with Opus at high effort
 as the reviewer. A temporary rate limit, a timeout, or a missing route does
 not count. This is the only allowed substitute. Quote the error in your
-report, and count the rounds each model ran.
+report. The PR line counts both models, for example
+`Reviewed with sol-loop: 1 round with <Sol model> and 2 with Opus (Sol out of credits). Verdict: approved`.
 
 Do not edit scoped files while review runs. Wait for the notice. Do not
 poll or start a second reviewer. Timeout, error, or no reply is not
@@ -114,8 +115,12 @@ or budget ends. Show both sides in 2-3 lines each. The user decides.
 Budget end is not approval.
 
 Do not push during the loop. Push after agreement only if the user asked
-to push, ship, or update the PR. Do not write the review into the PR
-description. It goes in your report.
+to push, ship, or update the PR. If you push to a PR, add above the model
+blurb:
+
+`Reviewed with sol-loop: <N> rounds with <model>. Sol verdict: approved`.
+
+Add `on <effort>` only if verified.
 
 Report: rounds, model, what Sol changed, diff size before/after, fixed and
 declined findings with reasons, usage if exposed (else say not), pushed or not.

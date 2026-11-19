@@ -45,7 +45,7 @@ GOOD
 - Don't narrate the diff. Name two identifiers at most, and link the issue,
   plan, or thread instead of restating it.
 - Everything in the body is for the human reviewer. Leave out plan step
-  codes, merge order, review rounds, proof logs, and checklists. They go in
+  codes, merge order, proof logs, and checklists. They go in
   your report to the user.
 - Ignore the repo's PR template unless the user asks for it.
 - When behavior changes, a short before/after table may replace the example.
