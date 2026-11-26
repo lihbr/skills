@@ -39,7 +39,7 @@ give them its link. Workers are never master threads. Don't title them
 ## State file
 
 Keep one state file from the first turn, at
-`~/.claude/coordinators/<project-slug>.md` unless the user names another
+`~/.claude/master-threads/<project-slug>.md` unless the user names another
 place. Start from [references/state.md](references/state.md). Give its path in
 your first message and in every scheduled check. After a compaction or a
 resume, reload this skill, then read the file and trust it over your memory.
