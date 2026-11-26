@@ -51,7 +51,8 @@ describes now, so replace a stale line and don't append under it.
 - Launch only on the user's go. Build every brief from
   [references/worker-brief.md](references/worker-brief.md). Workers already
   load the user's global rules, so add only what the user corrected in this
-  project.
+  project. Launch docs and skills workers once what they describe is built
+  and the user approved it.
 - **PR workers:** `t3_thread_launch` with the repo's `projectId` and
   `workspaceStrategy: { type: "worktree", baseRef: "origin/<PR base>", startFromOrigin: true }`.
   **Research workers:** `delegate_task` with `role: "research"`, and a task
@@ -78,7 +79,8 @@ describes now, so replace a stale line and don't append under it.
   green on its head, then read its diff and body against the user's rules:
   comments that describe the code, new flags or modules, tests that mock what
   they should run, a body that doesn't follow `file-pr`. Send fixes to the
-  worker first.
+  worker first. Before the first review post, have one read-only reviewer
+  read all the open PRs as one user journey.
 
 ## The user's time
 

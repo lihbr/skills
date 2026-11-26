@@ -16,7 +16,7 @@ Task: <goal and why, one paragraph>
 Done when: <a behavior you ran and how to prove it; if proof needs another deploy, who runs it. Never "PR open and green">
 Repo: <path>  Branch from and PR base: <default branch>
 PRs: <one PR; or "before" then "after", naming the step that must happen in between>
-Don't: <merge, deploy, touch prod, force-push others' branches, ...>
+Don't: <merge, deploy, touch prod, post for review, force-push others' branches, ...>
 Shared resources: <tenant, browser profile, or lock rules>
 Depends on: <other repos' PRs, and the exact strings or APIs you rely on>
 
