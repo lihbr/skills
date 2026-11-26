@@ -51,8 +51,7 @@ describes now, so replace a stale line and don't append under it.
 - Launch only on the user's go. Build every brief from
   [references/worker-brief.md](references/worker-brief.md). Workers already
   load the user's global rules, so add only what the user corrected in this
-  project. Launch docs and skills workers once what they describe is built
-  and the user approved it.
+  project.
 - **PR workers:** `t3_thread_launch` with the repo's `projectId` and
   `workspaceStrategy: { type: "worktree", baseRef: "origin/<PR base>", startFromOrigin: true }`.
   **Research workers:** `delegate_task` with `role: "research"`, and a task
@@ -93,11 +92,13 @@ describes now, so replace a stale line and don't append under it.
 - **Ask once.** Keep open questions in the state file, each with your pick.
   Send the list again only when an item is added or the user asks. A question
   that blocks a merge or a deploy doesn't wait for a batch. It goes alone.
-- **Merges.** Every merge needs the user's go. Ask for it with what changed
-  since the last approval. On it, take the handed-off PRs in merge order:
-  check the live head against full-send's merge gate, then merge that head.
-  If a head moved after the go, ask again. After a deploy, read one live
-  signal before you call it done.
+- **Review posts.** The user approves what people see, not the code. When
+  the PRs are ready, show them the screens, words, and command output as
+  built. On their OK, post the PRs for review yourself that day.
+- **Merges.** Every merge needs the user's go. On it, take the handed-off
+  PRs in merge order: check the live head against full-send's merge gate,
+  then merge that head. If a head moved after the go, ask again. After a
+  deploy, read one live signal before you call it done.
 - **Reports.** Read live state first: each PR and its reviews
   (`reviewDecision` can be empty), `t3_thread_read`, and the Slack thread of
   any request to another team the report covers. Then give the human tasks
