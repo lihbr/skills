@@ -8,25 +8,32 @@ description: Use when the user starts a "* Master" or coordinator thread, or ask
 You run a coordinator thread. You plan, launch worker threads, keep state, and
 talk to the user. Workers build. You don't write product code here.
 
-The user should only need this thread, and should rarely need to read it.
-Workers are never coordinators. Don't title them "* Master" and don't ask them
-to use this skill.
+The user reads this thread for the plan, human tasks, status, and merges. They
+review a diff, a screen, or copy where it is, usually the worker's thread, so
+give them its link. Workers are never coordinators. Don't title them
+"* Master" and don't ask them to use this skill.
 
 ## Plan
 
-- **Few PRs.** At most two PRs per repo: one before and one after whatever
-  must happen in between, such as a deploy, a migration, or another team's
-  change. One worker per repo owns both. Split further only when the user
-  asks.
+- **Few PRs.** One PR per repo, owned by one worker. Add a second only when a
+  named step outside the repo must happen in between, such as a deploy or a
+  migration, or when the user asks.
 - **Consumers.** Before the plan changes a token, cookie, endpoint, or schema,
   search every local clone and the org's code for what reads it.
-- **Contracts.** If workers will build on an API, route, or data model that
-  doesn't exist yet, write it in the plan first.
+- **Contracts.** Before the launch go, show in the plan what workers share
+  and what people see: each route, field, key, and state by name, each new
+  command's output, each screen's words. A draft PR on mocked data works for
+  screens. Name the existing command, route, or key you ruled out. Have one
+  subagent walk the plan as a user, failure paths included, and give its
+  findings with the plan. A reviewer's blocker stays open until the plan
+  names its fix.
 - **Facts.** Check what you tell workers: released versions (`npm view`) and
   what a merge to the default branch deploys.
 - **Other people.** Assume a decision is the user's to make. Don't plan a
   step that waits on another person or team unless the user named them. If
   you think someone else must agree, say so once with your recommendation.
+  Ask once who will review the PRs, and offer to send them the plan without
+  waiting for an answer.
 
 ## State file
 
@@ -34,7 +41,7 @@ Keep one state file from the first turn, at
 `~/.claude/coordinators/<project-slug>.md` unless the user names another
 place. Start from [references/state.md](references/state.md). Give its path in
 your first message and in every scheduled check. After a compaction or a
-resume, read it first and trust it over your memory.
+resume, reload this skill, then read the file and trust it over your memory.
 
 Edit it in place after every worker report, merge, and user decision. It
 describes now, so replace a stale line and don't append under it.
@@ -54,10 +61,12 @@ describes now, so replace a stale line and don't append under it.
 - **Answer workers yourself** from the plan, the code, the user's rules, or
   other threads. The exception is new surface: a flag, env var, route, export,
   folder, or module. Answer no and find the smaller change. If it is really
-  needed, put it in the human tasks with your recommendation.
+  needed, put it in the human tasks with your recommendation. A request from
+  the user approves a behavior, not a route you derive from it. Borrowing
+  another service's key or permission is new surface too.
 - **Send little.** A message wakes an idle worker. Send only what changes its
-  task. When a correction applies to several workers, go down the registry row
-  by row.
+  task, and pass on the user's words as written. When a correction applies to
+  several workers, go down the registry row by row.
 - **Hourly check.** While a worker is building, keep one `schedule_task`
   with a `once` schedule about an hour out, and save its id in the state
   file. In each check, judge workers by pushes and PR activity, not status
@@ -73,13 +82,21 @@ describes now, so replace a stale line and don't append under it.
 
 ## The user's time
 
-- **Stay quiet.** Each worker message starts a turn here. End it in one short
-  line, unless something needs the user or every worker is done.
+- **Stay quiet.** Each worker message starts a turn here. Update the state
+  file and reply "Noted.", unless something needs the user or every worker is
+  done. Never tell the user what they did in a worker thread.
 - **Batch human tasks.** Logins, secrets, on-screen checks, prod values,
   requests to other teams, and approvals go in one message, riskiest first,
   each with the exact action. Send it before you open secret or login cards.
-- **Merges.** Every merge needs the user's go. Send "full send" to each worker
-  in merge order, quoting the user's message. Wait for each merge report
-  before sending the next. Never merge from this thread.
-- **Reports.** Read live state first with `gh pr view` and `t3_thread_read`.
-  Then give the human tasks and the registry table, nothing else.
+- **Ask once.** Keep open questions in the state file, each with your pick.
+  Send the list again only when an item is added or the user asks. A question
+  that blocks a merge or a deploy doesn't wait for a batch. It goes alone.
+- **Merges.** Every merge needs the user's go. Ask for it with what changed
+  since the last approval. On it, take the handed-off PRs in merge order:
+  check the live head against full-send's merge gate, then merge that head.
+  If a head moved after the go, ask again. After a deploy, read one live
+  signal before you call it done.
+- **Reports.** Read live state first: each PR and its reviews
+  (`reviewDecision` can be empty), `t3_thread_read`, and the Slack thread of
+  any request to another team the report covers. Then give the human tasks
+  and the registry table, nothing else.

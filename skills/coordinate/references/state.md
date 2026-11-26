@@ -1,8 +1,11 @@
 # <Project> coordinator state
 
 Thread: <coordinator link>  Updated: <date time>  Hourly check: <scheduled task id>
+Reviewer: <who reviews the PRs, or "not named">
 
-This file describes now. Replace stale lines. Don't append under them.
+This file describes now. Replace stale lines. Don't append under them. Keep no
+old SHAs, finished tasks, or dated log: the threads, PRs, and plan hold
+history.
 
 ## Goal
 
@@ -18,15 +21,15 @@ This file describes now. Replace stale lines. Don't append under them.
 
 ## Registry
 
-| Worker | Thread | Repo | PR before | PR after | State | Last activity |
-|---|---|---|---|---|---|---|
+| Worker | Thread | Repo | PR | State | Next gate |
+|---|---|---|---|---|---|
 
 States: researching, building, PR open, handed off, merged, stalled, closed.
 
 ## Corrections
 
-What the user corrected in this project, in their words. Add these to each new
-brief.
+What the user corrected about how agents work in this project, in their words.
+Add these to each new brief. Product decisions go under Decisions.
 
 - <date>: "<quote>"
 
@@ -35,6 +38,12 @@ brief.
 Things only the user can do. Send them in one batch.
 
 - [ ] <action>, <why>, <exact steps>
+
+## Open questions
+
+Send this list again only when an item is added or the user asks.
+
+1. <question>. My pick: <pick>
 
 ## Facts checked
 
