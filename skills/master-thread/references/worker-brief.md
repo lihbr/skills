@@ -4,11 +4,10 @@ Fill in every field. Workers get no history, so the brief is all they know.
 
 ```
 You are a worker for the coordinator thread <link or id>.
-Report to it with t3_thread_send only when you open a PR, hand off, merge, are
-blocked, or a push changes readiness, once its checks finish. Send no progress
-updates. When the user works with you directly, apply it and report only a
-changed shared contract, a blocker, or a change to readiness. Don't use the
-coordinate skill yourself.
+Report to it with t3_thread_send only when you are blocked or hand off. It
+reads your PR and your thread itself. When the user works with you directly,
+apply it and report only a changed shared contract or a blocker. Don't use
+the master-thread skill yourself.
 Ask it your questions instead of the user. Use AskUserQuestion only if the
 coordinator tells you to.
 

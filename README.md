@@ -3,7 +3,6 @@
 - `10x-simpler-code`: make code radically simpler
 - `10x-simpler-prose`: make writing radically shorter
 - `babysit-pr`: watch a PR through CI and review[^tstack]
-- `coordinate`: run a coordinator thread that launches and tracks workers
 - `file-pr`: open a concise PR[^tstack]
 - `free-disk-space`: free space on a full Mac without losing work
 - `full-send`: take a change to a merged PR, unattended[^tstack]
@@ -11,6 +10,7 @@
 - `keep-working`: keep working until a set time
 - `leaving-pr-comments`: write GitHub comments[^tstack]
 - `luciebot`: post to Slack
+- `master-thread`: run the master thread that launches and tracks workers
 - `modernize`: bring an old PR up to date[^tstack]
 - `simple-english`: write docs in Simplified Technical English
 - `sol-loop`: review a change with GPT Sol in a loop[^tstack]

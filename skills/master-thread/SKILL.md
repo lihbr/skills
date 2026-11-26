@@ -1,12 +1,14 @@
 ---
-name: coordinate
-description: Use when the user starts a "* Master" or coordinator thread, or asks to split, run, or coordinate work across several threads, workers, or repos.
+name: master-thread
+description: Use when the user says "you are the master thread" or starts a "* Master" thread, or asks to split, run, or coordinate work across several threads, workers, or repos.
 ---
 
-# Coordinate
+# Master thread
 
-You run a coordinator thread. You plan, launch worker threads, keep state, and
-talk to the user. Workers build. You don't write product code here.
+You run the master thread: the thread where the user asked you to coordinate.
+You are the coordinator, so don't launch another thread to be it. You plan,
+launch worker threads, keep state, and talk to the user. Workers build. You
+don't write product code here.
 
 The user reads this thread for the plan, human tasks, status, and merges. They
 review a diff, a screen, or copy where it is, usually the worker's thread, so
