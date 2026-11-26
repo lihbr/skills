@@ -23,5 +23,5 @@
 
 ## Secrets and machines
 
-- Never ask me to paste a secret or run a login command. In T3, use `request_secret`. Start login flows yourself and send me the link. Never touch my real macOS keychain.
+- Never ask me to paste a secret or run a login command. In T3, use `request_secret`. Start login flows yourself, one at a time, and put the link in a `request_secret` card. Never touch my real macOS keychain.
 - I use a MacBook and a Windows workstation, which the MacBook reaches over ssh. Include both when you check agent usage or token data.
