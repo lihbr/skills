@@ -93,8 +93,9 @@ describes now, so replace a stale line and don't append under it.
   Send the list again only when an item is added or the user asks. A question
   that blocks a merge or a deploy doesn't wait for a batch. It goes alone.
 - **Review posts.** The user approves what people see, not the code. When
-  the PRs are ready, show them the screens, words, and command output as
-  built. On their OK, post the PRs for review yourself that day.
+  you call the PRs ready, show them the screens, words, and command output
+  as built. On their OK, post the PRs yourself that day, where the user's
+  rules send review requests.
 - **Merges.** Every merge needs the user's go. On it, take the handed-off
   PRs in merge order: check the live head against full-send's merge gate,
   then merge that head. If a head moved after the go, ask again. After a
