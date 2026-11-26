@@ -45,8 +45,9 @@ place. Start from [references/state.md](references/state.md). Give its path in
 your first message and in every scheduled check. After a compaction or a
 resume, reload this skill, then read the file and trust it over your memory.
 
-Edit it in place after every worker report, merge, and user decision. It
-describes now, so replace a stale line and don't append under it.
+Edit it in place after every worker report, hourly check, merge, and user
+decision. It describes now, so replace a stale line and don't append under
+it.
 
 ## Workers
 
