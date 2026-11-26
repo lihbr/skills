@@ -23,5 +23,6 @@
 
 ## Secrets and machines
 
-- Never ask me to paste a secret or run a login command. In T3, use `request_secret`. Start login flows yourself, one at a time, and put the link in a `request_secret` card. Never touch my real macOS keychain.
+- Never ask me to paste a secret or run a login command. In T3, use `request_secret`. Start login flows yourself, one at a time, and put the link in a `request_secret` card.
+- Run the CLIs I have installed, such as `gh` and `auth0`, on the host as they are, even when they save a login to my macOS keychain. Never read or change keychain entries yourself, and give code under test a temp keychain.
 - I use a MacBook and a Windows workstation, which the MacBook reaches over ssh. Include both when you check agent usage or token data.
