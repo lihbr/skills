@@ -5,60 +5,49 @@ description: Use when the Mac's disk is full or nearly full, a command fails wit
 
 # Free Disk Space
 
-Free space on the Mac fast, without losing work. Delete the approved items
-below without asking. List everything else for the user.
+Delete the approved items below without asking. List everything else for the
+user. Never `sudo` on the Mac, kill a process, or empty the Trash.
 
-## Measure
-
-- Run `df -h /System/Volumes/Data` before and after each step. `du`
-  overcounts APFS clones (simulators, Chrome copies) and pnpm hard links, so
-  only `df` shows what a deletion freed.
-- Run `du` with `-x` and a time limit. Skip folders macOS protects.
-- Below about 1 GB, shell commands can fail to start. Only if they do, ask the
-  user to empty the Trash or delete one large folder they know, then continue.
-
-## Don't disturb running work
-
-Other agents build and test in worktrees while you clean.
-
-- Run `pgrep -fl 'xcodebuild|gradle|simctl'` to see what builds or tests.
-- Skip anything modified in the last 3 hours, and any folder a running process
-  has as its working directory (`lsof -a -d cwd`).
-- Never `sudo` on the Mac, never kill processes, never empty the Trash.
+- Run `df -h /System/Volumes/Data` before and after each step. `du` overcounts
+  APFS clones and hard links. Run it with `-x` and a time limit, and skip
+  folders macOS protects.
+- Right before each delete, skip the target if another agent may be using it:
+  `find <path> -mmin -180 -print -quit` prints a file, or a process has its
+  working directory inside it (`lsof -a -d cwd`).
+- If shell commands fail to start (under about 1 GB free), ask the user to
+  empty the Trash or delete one large folder they know, then continue.
 
 ## Delete without asking
 
 1. **Xcode test simulator clones** in `~/Library/Developer/XCTestDevices`.
-   If no `xcodebuild` runs, delete the ones that are shut down with
-   `xcrun simctl --set testing delete <udid>`. Never delete a normal
+   If `pgrep -fl xcodebuild` prints nothing, delete the ones that are shut
+   down with `xcrun simctl --set testing delete <udid>`. Never delete a normal
    simulator.
-2. **Build output in idle worktrees and clones:** Xcode `DerivedData` and
-   `build` folders, and Android `build` and `.gradle` folders. Each must be
-   ignored (`git check-ignore`) and hold no tracked files (`git ls-files`
-   prints nothing for it). Also entries in
-   `~/Library/Developer/Xcode/DerivedData` older than 3 hours.
-3. **T3 worktrees** under `~/.t3/worktrees`, when all of these are true:
+2. **Build output** in git repos, outside `node_modules`: Xcode `DerivedData`
+   and `build` folders, and Android `build` and `.gradle` folders. Each must
+   be ignored (`git check-ignore`) and hold no tracked files (`git ls-files
+   <folder>` prints nothing). Also entries in
+   `~/Library/Developer/Xcode/DerivedData`.
+3. **T3 worktrees** under `~/.t3/worktrees`, when all of these are true. If a
+   lookup fails or is incomplete, keep the worktree.
    - No unsettled thread uses it. Get unsettled threads with `t3_thread_list`
      (`allProjects`, `settled: false`, `includeSubagents`, every page). Map
      thread ids to paths with
      `sqlite3 -readonly "file:$HOME/.t3/userdata/statev2.sqlite?mode=ro" "SELECT thread_id, json_extract(payload_json,'$.worktreePath') FROM orchestration_v2_projection_threads"`.
    - Every PR for its branch is merged, or it has none
      (`gh pr list --head <branch> --state all`).
-   - `git status --porcelain` is empty.
+   - `git status --porcelain --ignored` lists only ignored files that an
+     install or build recreates, or that the main checkout holds unchanged.
+     An edited `.env` or a saved login is neither.
+   - `git branch -a --contains HEAD` lists a branch.
 
-   If any of these lookups fails or is incomplete, keep the worktree.
-
-   Remove it with `git worktree remove <path>` so its branch stays. If it has
-   submodules, check that each is clean, then add `--force`.
+   Remove it with `git worktree remove <path>`, which keeps its branch. If it
+   has submodules, check that each is clean, then add `--force`.
 
 ## Ask first
 
-List each with its size, what it holds, and your recommendation:
-
-- Worktrees that meet the rule above except for uncommitted changes. Say what
-  the changes are.
-- Package caches (pnpm, yarn, npm, Gradle, `~/Library/Caches`). Other
-  projects often use them.
+- Worktrees that fail only the `git status` check. Say what the files are.
+- Package caches (pnpm, yarn, npm, Gradle, `~/Library/Caches`).
 - `iOS DeviceSupport` folders. Keep the versions of attached phones
   (`xcrun devicectl list devices`).
 - Docker images and volumes. After a prune, `colima ssh -- sudo fstrim -av`
@@ -70,5 +59,5 @@ List each with its size, what it holds, and your recommendation:
 
 ## Report
 
-Free space before and after from `df`, what you deleted with path and size,
-and the ask-first list.
+Free space before and after, each deletion with path and size, and each
+ask-first item with size and your recommendation.
