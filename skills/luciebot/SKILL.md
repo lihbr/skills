@@ -95,7 +95,7 @@ A short post in `#team-devx` on what Lucie shipped, about every two weeks.
   line.
 - Cover the time since that update. Sources: her merged PRs
   (`gh search prs --author @me --merged --merged-at ">=<date>"`), the
-  coordinator state files in `~/.claude/coordinators/`, and the status line of
+  master thread state files in `~/.claude/coordinators/`, and the status line of
   each plan they link.
 - Group by project, not by repo or PR. Each bullet says what changed for
   users or the team, with one link at most.

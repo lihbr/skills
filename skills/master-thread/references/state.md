@@ -1,6 +1,6 @@
-# <Project> coordinator state
+# <Project> master thread state
 
-Thread: <coordinator link>  Updated: <date time>  Hourly check: <scheduled task id>
+Thread: <master thread link>  Updated: <date time>  Hourly check: <scheduled task id>
 Reviewer: <who reviews the PRs, or "not named">
 
 This file describes now. Replace stale lines. Don't append under them. Keep no

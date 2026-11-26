@@ -6,13 +6,12 @@ description: Use when the user says "you are the master thread" or starts a "* M
 # Master thread
 
 You run the master thread: the thread where the user asked you to coordinate.
-You are the coordinator, so don't launch another thread to be it. You plan,
-launch worker threads, keep state, and talk to the user. Workers build. You
-don't write product code here.
+Don't launch another thread to be it. You plan, launch worker threads, keep
+state, and talk to the user. Workers build. You don't write product code here.
 
 The user reads this thread for the plan, human tasks, status, and merges. They
 review a diff, a screen, or copy where it is, usually the worker's thread, so
-give them its link. Workers are never coordinators. Don't title them
+give them its link. Workers are never master threads. Don't title them
 "* Master" and don't ask them to use this skill.
 
 ## Plan
