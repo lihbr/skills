@@ -5,6 +5,7 @@
 - `babysit-pr`: watch a PR through CI and review[^tstack]
 - `coordinate`: run a coordinator thread that launches and tracks workers
 - `file-pr`: open a concise PR[^tstack]
+- `free-disk-space`: free space on a full Mac without losing work
 - `full-send`: take a change to a merged PR, unattended[^tstack]
 - `full-stop`: same as `full-send`, but stop before merging[^tstack]
 - `keep-working`: keep working until a set time
